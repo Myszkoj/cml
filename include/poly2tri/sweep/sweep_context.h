@@ -41,7 +41,7 @@ namespace p2t {
 
 // Inital triangle factor, seed triangle will extend 30% of
 // PointSet width to both left and right.
-const P2T_PRECISION_TYPE kAlpha = static_cast<P2T_PRECISION_TYPE>(0.3);
+inline const P2T_PRECISION_TYPE kAlpha = static_cast<P2T_PRECISION_TYPE>(0.3);
 
 struct Point;
 class Triangle;

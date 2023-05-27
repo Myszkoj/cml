@@ -42,13 +42,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -81,12 +81,14 @@
     <OutDir>.\debug\</OutDir>
     <IntDir>.\debug\intermediate\</IntDir>
     <IncludePath>..\dpl\include;..\cml\include;$(IncludePath)</IncludePath>
+    <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>.\release\</OutDir>
     <IntDir>.\release\intermediate\</IntDir>
     <IncludePath>..\dpl\include;..\cml\include;$(IncludePath)</IncludePath>
+    <AllProjectIncludesArePublic>true</AllProjectIncludesArePublic>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -198,6 +200,11 @@
     <ClCompile Include="source\cml_Rectangle.cpp" />
     <ClCompile Include="source\cml_Sphere.cpp" />
     <ClCompile Include="source\cml_TriangleMesh.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dpl\dpl.vcxproj">
+      <Project>{6f6ebf4b-f531-408e-8c91-4bece3d1c58d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
