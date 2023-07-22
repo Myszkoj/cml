@@ -169,6 +169,7 @@
     <ClInclude Include="include\cml_Rectangle.h" />
     <ClInclude Include="include\cml_Sphere.h" />
     <ClInclude Include="include\cml_TriangleMesh.h" />
+    <ClInclude Include="include\d3.h" />
     <ClInclude Include="include\poly2tri\common\p2t.h" />
     <ClInclude Include="include\poly2tri\common\shapes.h" />
     <ClInclude Include="include\poly2tri\common\utils.h" />

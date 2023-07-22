@@ -61,6 +61,9 @@
     <Filter Include="TriangleMesh\poly2tri\sweep">
       <UniqueIdentifier>{da8049ad-38ad-41fa-b9fb-0b3cebe57844}</UniqueIdentifier>
     </Filter>
+    <Filter Include="d3">
+      <UniqueIdentifier>{85d02218-25b4-4be7-86ed-1d0b1176552d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\cml_utilities.h">
@@ -138,6 +141,9 @@
     </ClInclude>
     <ClInclude Include="include\poly2tri\sweep\sweep_context.h">
       <Filter>TriangleMesh\poly2tri\sweep</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3.h">
+      <Filter>d3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
