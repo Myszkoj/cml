@@ -41,16 +41,16 @@ namespace cml // core-math-lib
 	using Mat3 = glm::mat3;
 	using Mat4 = glm::mat4;
 
-	inline const float	FLOAT_INFINITY	= std::numeric_limits<float>::max();
-	inline const Quat	QUAT_ZERO(1.f, 0.f, 0.f, 0.f);
-	inline const Mat3	MAT3_IDENTITY(1.f);
-	inline const Mat4	MAT4_IDENTITY(1.f);
-	inline const float	ANGLE_90		= glm::pi<float>()/2.f;
-	inline const float	ANGLE_180		= glm::pi<float>();
-	inline const float	ANGLE_270		= glm::pi<float>()*(3.f/2.f);
-	inline const float	ANGLE_360		= glm::pi<float>()*2.f;
-	inline const float	PLUS_EPSILON	= 0.0001f;
-	inline const float	MINUS_EPSILON	= -0.0001f;
+	static const float	FLOAT_INFINITY	= std::numeric_limits<float>::max();
+	static const Quat	QUAT_ZERO(1.f, 0.f, 0.f, 0.f);
+	static const Mat3	MAT3_IDENTITY(1.f);
+	static const Mat4	MAT4_IDENTITY(1.f);
+	static const float	ANGLE_90		= glm::pi<float>()/2.f;
+	static const float	ANGLE_180		= glm::pi<float>();
+	static const float	ANGLE_270		= glm::pi<float>()*(3.f/2.f);
+	static const float	ANGLE_360		= glm::pi<float>()*2.f;
+	static const float	PLUS_EPSILON	= 0.0001f;
+	static const float	MINUS_EPSILON	= -0.0001f;
 
 
 	template<bool bSigned>
@@ -323,13 +323,13 @@ namespace cml // core-math-lib
 	template<class VectorT>
 	inline VectorT			normalize_vector(						const VectorT&		v)
 	{
-		float len = glm::length(v);
+		const float len = glm::length(v);
 		return len > 0.f ? v/len : v;
 	}
 
 	inline Quat				normalize_quaternion(					const Quat&			q)
 	{
-		float len = glm::sqrt(dot(q, q));
+		const float len = glm::sqrt(dot(q, q));
 		return len <= 0.f ? glm::quat() : q / len;
 	}
 

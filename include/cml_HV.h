@@ -8,58 +8,58 @@ namespace cml
 {
 	class	HVScale
 	{
-	public: // data
+	public:		// [DATA]
 		float horizontal;
 		float vertical;
 
-	public: // lifecycle
-		CLASS_CTOR		HVScale(	const float		HORIZONTAL,
-									const float		VERTICAL)
+	public:		// [LIFECYCLE]
+		CLASS_CTOR	HVScale(	const float		HORIZONTAL,
+								const float		VERTICAL)
 			: horizontal(HORIZONTAL)
 			, vertical(VERTICAL)
 		{
 
 		}
 
-		inline HVScale&	operator+=(	const HVScale&	OTHER)
+		HVScale&	operator+=(	const HVScale&	OTHER)
 		{
 			horizontal	+= OTHER.horizontal;
 			vertical	+= OTHER.vertical;
 			return *this;
 		}
 
-		inline HVScale&	operator*=(	const float		FACTOR)
+		HVScale&	operator*=(	const float		FACTOR)
 		{
 			horizontal *= FACTOR;
 			vertical *= FACTOR;
 			return *this;
 		}
 
-		inline HVScale&	operator/=(	const float		FACTOR)
+		HVScale&	operator/=(	const float		FACTOR)
 		{
 			horizontal /= FACTOR;
 			vertical /= FACTOR;
 			return *this;
 		}
 
-		inline HVScale  operator*(	const float		FACTOR) const
+		HVScale		operator*(	const float		FACTOR) const
 		{
 			return HVScale(*this) *= FACTOR;
 		}
 
-		inline HVScale  operator/(	const float		FACTOR) const
+		HVScale		 operator/(	const float		FACTOR) const
 		{
 			return HVScale(*this) /= FACTOR;
 		}
 
-	public: // functions
-		inline void reset()
+	public:		// [FUNCTIONS]
+		void reset()
 		{
 			horizontal	= 0.f;
 			vertical	= 0.f;
 		}
 
-		inline void invalidate()
+		void invalidate()
 		{
 			horizontal	= std::numeric_limits<float>::infinity();
 			vertical	= std::numeric_limits<float>::infinity();
@@ -70,90 +70,128 @@ namespace cml
 	using	HVSize = HVScale;
 
 
-	/*
-		3D coordinates converted into position on the horizontal(XZ plane) at altitude = VPos.
-	*/
+	// 3D coordinates converted into position on the horizontal(XZ plane) at altitude = VPos.
 	class	HVPoint
 	{
-	public: // data
-		glm::vec2	h; // Position on the horizontal(XZ) plane.
+	public:		// [SUBTYPES]
+		enum AxisSystem
+		{
+			RIGHT_HANDED_Y_UP,
+			RIGHT_HANDED_Z_UP
+		};
+
+	public:		// [DATA]
+		glm::vec2	h; // Position on the horizontal plane.
 		float		v; // Vertical offset from the horizontal plane.
 
-	public: // lifecycle
-		CLASS_CTOR			HVPoint()
+	public:		// [LIFECYCLE]
+		CLASS_CTOR		HVPoint()
 			: h(0.f, 0.f)
 			, v(0.f)
 		{
 			
 		}
 
-		CLASS_CTOR			HVPoint(			const glm::vec3&		XYZ)
-			: h(XYZ.x, -XYZ.z)
-			, v(XYZ.y)
+		CLASS_CTOR		HVPoint(			const glm::vec3&		COORDS_3D,
+											const AxisSystem		SYSTEM = RIGHT_HANDED_Y_UP)
+			: h(COORDS_3D.x, (SYSTEM == RIGHT_HANDED_Y_UP) ? -COORDS_3D.z : COORDS_3D.y)
+			, v((SYSTEM == RIGHT_HANDED_Y_UP) ? COORDS_3D.y : COORDS_3D.z)
 		{
 
 		}
 
-		CLASS_CTOR			HVPoint(			const glm::vec2&		H_POS,
-												const float				V_POS)
+		CLASS_CTOR		HVPoint(			const glm::vec2&		H_POS,
+											const float				V_POS)
 			: h(H_POS)
 			, v(V_POS)
 		{
 
 		}
 
-		CLASS_CTOR			HVPoint(			const float				HX_POS,
-												const float				HY_POS,
-												const float				V_POS)
+		CLASS_CTOR		HVPoint(			const float				HX_POS,
+											const float				HY_POS,
+											const float				V_POS)
 			: h(HX_POS, HY_POS)
 			, v(V_POS)
 		{
 
 		}
 
-	public: // functions
-		inline bool			operator==(			const HVPoint&			OTHER) const
+	public:		// [OPERATORS]
+		bool			operator==(			const HVPoint&			OTHER) const
 		{
 			return h == OTHER.h && v == OTHER.v;
 		}
 		
-		inline bool			operator!=(			const HVPoint&			OTHER) const
+		bool			operator!=(			const HVPoint&			OTHER) const
 		{
 			return h != OTHER.h || v != OTHER.v;
 		}
 
-		inline HVPoint		operator+(			const HVPoint&			OTHER) const
+		HVPoint			operator+(			const HVPoint&			OTHER) const
 		{
 			return HVPoint(h + OTHER.h, v + OTHER.v);
 		}
 
-		inline HVPoint		mod(				const HVScale&			HV) const
+		HVPoint			operator-(			const HVPoint&			OTHER) const
+		{
+			return HVPoint(h - OTHER.h, v - OTHER.v);
+		}
+
+		HVPoint&		operator+=(			const HVPoint&			OTHER)
+		{
+			this->h += OTHER.h;
+			this->v += OTHER.v;
+			return *this;
+		}
+
+		HVPoint&		operator-=(			const HVPoint&			OTHER)
+		{
+			this->h -= OTHER.h;
+			this->v -= OTHER.v;
+			return *this;
+		}
+
+		HVPoint			operator*(			const HVScale&			SCALE) const
+		{
+			return HVPoint(h * SCALE.horizontal, v * SCALE.vertical);
+		}
+
+		HVPoint&		operator*=(			const HVScale&			SCALE)
+		{
+			this->h *= SCALE.horizontal;
+			this->v *= SCALE.vertical;
+			return *this;
+		}
+
+	public:		// [FUNCTIONS]
+		HVPoint			mod(				const HVScale&			HV) const
 		{
 			return HVPoint(glm::vec2(fmod(h.x, HV.horizontal), fmod(h.y, HV.horizontal)), fmod(v, HV.vertical));
 		}
 
-		inline void			swap(				HVPoint&				other)
+		void			swap(				HVPoint&				other)
 		{
 			std::swap(h, other.h);
 			std::swap(v, other.v);
 		}
 
-		inline void			minimize(			const HVPoint&			OTHER)
+		void			minimize(			const HVPoint&			OTHER)
 		{
 			if(OTHER.h.x < h.x) h.x = OTHER.h.x;
 			if(OTHER.h.y < h.y) h.y = OTHER.h.y;
 			if(OTHER.v < v) v = OTHER.v;
 		}
 
-		inline void			maximize(			const HVPoint&			OTHER)
+		void			maximize(			const HVPoint&			OTHER)
 		{
 			if(OTHER.h.x > h.x) h.x = OTHER.h.x;
 			if(OTHER.h.y > h.y) h.y = OTHER.h.y;
 			if(OTHER.v > v) v = OTHER.v;
 		}
 
-		static HVPoint		min_of(				const HVPoint*			POINTS,
-												const uint32_t			NUM_POINTS)
+		static HVPoint	min_of(				const HVPoint*			POINTS,
+											const uint32_t			NUM_POINTS)
 		{
 			HVPoint output = POINTS[0];
 			for(uint32_t index = 1; index < NUM_POINTS; ++index)
@@ -163,8 +201,8 @@ namespace cml
 			return output;
 		}
 
-		static HVPoint		max_of(				const HVPoint*			POINTS,
-												const uint32_t			NUM_POINTS)
+		static HVPoint	max_of(				const HVPoint*			POINTS,
+											const uint32_t			NUM_POINTS)
 		{
 			HVPoint output = POINTS[0];
 			for(uint32_t index = 1; index < NUM_POINTS; ++index)
@@ -174,56 +212,46 @@ namespace cml
 			return output;
 		}
 
-	public: // conversions
-		inline operator		const glm::vec3() const
+	public:		// [CONVERSIONS]
+		//operator const glm::vec3() const
+		//{
+		//	return this->to_xyz();
+		//}
+
+		glm::vec3		to_xyz(				const AxisSystem		SYSTEM = RIGHT_HANDED_Y_UP) const
 		{
-			return this->to_xyz();
+			return (SYSTEM == RIGHT_HANDED_Y_UP) ? glm::vec3(h.x, v, -h.y) : glm::vec3(h.x, h.y, v);
 		}
 
-		inline glm::vec3	to_xyz() const
-		{
-			return glm::vec3(h.x, v, -h.y);
-		}
-
-		inline glm::vec2	vector_to(			const HVPoint&		OTHER) const
-		{
-			return OTHER.h - this->h;
-		}
-
-		inline glm::vec2	vector_from(		const HVPoint&		OTHER) const
-		{
-			return this->h - OTHER.h;
-		}
-
-		inline float		horizontal_distance(const HVPoint&		OTHER) const
+		float			horizontal_distance(const HVPoint&			OTHER) const
 		{
 			return glm::distance(this->h, OTHER.h);
 		}
 
-		inline float		vertical_distance(	const HVPoint&		OTHER) const
+		float			vertical_distance(	const HVPoint&			OTHER) const
 		{
 			return glm::abs(this->v - OTHER.v);
 		}
 
-		inline void			convert(			const glm::vec3&	NEW_COORDINATES)
-		{
-			h.x	= NEW_COORDINATES.x;
-			v	= NEW_COORDINATES.y;
-			h.y	= -NEW_COORDINATES.z;
-		}
+		//void			convert(			const glm::vec3&	NEW_COORDINATES)
+		//{
+		//	h.x	= NEW_COORDINATES.x;
+		//	v	= NEW_COORDINATES.y;
+		//	h.y	= -NEW_COORDINATES.z;
+		//}
 
-		inline void			invalidate_horizontal()
+		void			invalidate_horizontal()
 		{
 			h.x = std::numeric_limits<float>::quiet_NaN();
 			h.y = std::numeric_limits<float>::quiet_NaN();
 		}
-
-		inline void			invalidate_vertical()
+			
+		void			invalidate_vertical()
 		{
 			v = std::numeric_limits<float>::quiet_NaN();
 		}
 
-		inline void			invalidate()
+		void			invalidate()
 		{
 			invalidate_horizontal();
 			invalidate_vertical();
@@ -233,7 +261,7 @@ namespace cml
 
 	class	HVDistance : public HVScale
 	{
-	public: // lifecycle
+	public:		// [LIFECYCLE]
 		using HVScale::HVScale;
 
 		CLASS_CTOR	HVDistance(): HVScale(0.f, 0.f){}
@@ -245,7 +273,7 @@ namespace cml
 
 		}
 
-	public: // functions
+	public:		// [FUNCTIONS]
 		using HVScale::reset;
 
 		inline void reset(		const HVPoint& A,
