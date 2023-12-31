@@ -1,0 +1,53 @@
+﻿  cml_AABB.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Ray.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_AABR.cpp
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Rectangle.h(3,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_Cone.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Ray.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_ConvexHull.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Ray.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_CoordinateSystem.cpp
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_CoordinateSystem.h(4,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_Cuboid.cpp
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Rectangle.h(3,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_Cylinder.cpp
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Cylinder.h(4,10): fatal error C1083: Cannot open include file: 'dpl_GeneralException.h': No such file or directory
+  cml_EulerAngles.cpp
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_EulerAngles.h(4,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_Funnel.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Funnel.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_utilities.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_utilities.h(652,7): error C2039: 'optional': is not a member of 'std'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\cstring(21): message : see declaration of 'std'
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_utilities.h(652,15): error C2143: syntax error: missing ';' before '<'
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_utilities.h(652,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\source\cml_utilities.cpp(168,7): error C2039: 'optional': is not a member of 'std'
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_utilities.h(872): message : see declaration of 'std'
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\source\cml_utilities.cpp(168,15): error C2143: syntax error: missing ';' before '<'
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\source\cml_utilities.cpp(168,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\source\cml_utilities.cpp(168,15): error C2086: 'int cml::optional': redefinition
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_utilities.h(652): message : see declaration of 'cml::optional'
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\source\cml_utilities.cpp(171,2): error C2143: syntax error: missing ';' before '{'
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\source\cml_utilities.cpp(171,2): error C2447: '{': missing function header (old-style formal list?)
+  cml_OBB.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Ray.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_Plane.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Ray.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_Ray.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Ray.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_Rectangle.cpp
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Rectangle.h(3,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_Sphere.cpp
+  The contents of <optional> are available only with C++17 or later.
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_Ray.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  cml_TriangleMesh.cpp
+C:\Users\jmysz\OneDrive\Dokumenty\FirePlatform\Egress\cml\include\cml_TriangleMesh.h(5,10): fatal error C1083: Cannot open include file: 'dpl_ReadOnly.h': No such file or directory
+  Generating Code...
