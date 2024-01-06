@@ -34,3 +34,5 @@ release/
 *.exe
 *.out
 *.app
+/debug/cml.lib
+/release/cml.lib
