@@ -1,6 +1,6 @@
 # Folders
-debug/intermediate/
-release/intermediate/
+debug/
+release/
 
 # Prerequisites
 *.d
@@ -18,11 +18,11 @@ release/intermediate/
 # Compiled Dynamic libraries
 *.so
 *.dylib
+*.dll
 
 # Fortran module files
 *.mod
 *.smod
-*.dll
 
 # Compiled Static libraries
 *.lai
